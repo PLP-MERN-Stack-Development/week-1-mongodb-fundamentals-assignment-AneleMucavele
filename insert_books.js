@@ -10,189 +10,275 @@ const uri = 'mongodb://localhost:27017';
 const dbName = 'plp_bookstore';
 const collectionName = 'books';
 
+// Task 2: Basic CRUD Operations
 // Sample book data
-const books = [
+db.books.insertMany([
   {
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    genre: 'Fiction',
-    published_year: 1960,
-    price: 12.99,
+    title: "Shadows of Soweto",
+    author: "Naledi Khumalo",
+    genre: "Historical Fiction",
+    published_year: 2022,
+    price: 180.00,
     in_stock: true,
-    pages: 336,
-    publisher: 'J. B. Lippincott & Co.'
+    pages: 320,
+    publisher: "Ubuntu Press"
   },
   {
-    title: '1984',
-    author: 'George Orwell',
-    genre: 'Dystopian',
-    published_year: 1949,
-    price: 10.99,
+    title: "Voices in the Karoo",
+    author: "Thabo Mokoena",
+    genre: "Literary Fiction",
+    published_year: 2019,
+    price: 150.00,
     in_stock: true,
-    pages: 328,
-    publisher: 'Secker & Warburg'
+    pages: 290,
+    publisher: "Karoo Books"
   },
   {
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    genre: 'Fiction',
-    published_year: 1925,
-    price: 9.99,
-    in_stock: true,
-    pages: 180,
-    publisher: 'Charles Scribner\'s Sons'
-  },
-  {
-    title: 'Brave New World',
-    author: 'Aldous Huxley',
-    genre: 'Dystopian',
-    published_year: 1932,
-    price: 11.50,
+    title: "The Township Code",
+    author: "Ayanda Mthembu",
+    genre: "Thriller",
+    published_year: 2021,
+    price: 200.00,
     in_stock: false,
-    pages: 311,
-    publisher: 'Chatto & Windus'
+    pages: 340,
+    publisher: "Mzansi House"
   },
   {
-    title: 'The Hobbit',
-    author: 'J.R.R. Tolkien',
-    genre: 'Fantasy',
-    published_year: 1937,
-    price: 14.99,
+    title: "Rain Over Table Mountain",
+    author: "Sipho Ndlovu",
+    genre: "Romance",
+    published_year: 2020,
+    price: 170.00,
     in_stock: true,
     pages: 310,
-    publisher: 'George Allen & Unwin'
+    publisher: "Cape Reads"
   },
   {
-    title: 'The Catcher in the Rye',
-    author: 'J.D. Salinger',
-    genre: 'Fiction',
-    published_year: 1951,
-    price: 8.99,
+    title: "Ubuntu Rising",
+    author: "Zanele Dlamini",
+    genre: "Political Drama",
+    published_year: 2023,
+    price: 190.00,
     in_stock: true,
-    pages: 224,
-    publisher: 'Little, Brown and Company'
+    pages: 365,
+    publisher: "Mandela Literary Co."
   },
   {
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    genre: 'Romance',
-    published_year: 1813,
-    price: 7.99,
-    in_stock: true,
-    pages: 432,
-    publisher: 'T. Egerton, Whitehall'
-  },
-  {
-    title: 'The Lord of the Rings',
-    author: 'J.R.R. Tolkien',
-    genre: 'Fantasy',
-    published_year: 1954,
-    price: 19.99,
-    in_stock: true,
-    pages: 1178,
-    publisher: 'Allen & Unwin'
-  },
-  {
-    title: 'Animal Farm',
-    author: 'George Orwell',
-    genre: 'Political Satire',
-    published_year: 1945,
-    price: 8.50,
+    title: "Sheep Among Lions",
+    author: "Kagiso Molefe",
+    genre: "Mystery",
+    published_year: 2018,
+    price: 145.00,
     in_stock: false,
-    pages: 112,
-    publisher: 'Secker & Warburg'
+    pages: 280,
+    publisher: "Jozi Stories"
   },
   {
-    title: 'The Alchemist',
-    author: 'Paulo Coelho',
-    genre: 'Fiction',
-    published_year: 1988,
-    price: 10.99,
+    title: "Dust of Durban",
+    author: "Lindiwe Majozi",
+    genre: "Young Adult",
+    published_year: 2021,
+    price: 160.00,
     in_stock: true,
-    pages: 197,
-    publisher: 'HarperOne'
+    pages: 300,
+    publisher: "KwaZulu Reads"
   },
   {
-    title: 'Moby Dick',
-    author: 'Herman Melville',
-    genre: 'Adventure',
-    published_year: 1851,
-    price: 12.50,
+    title: "Echoes from Robben Island",
+    author: "Bongani Sithole",
+    genre: "Biography",
+    published_year: 2017,
+    price: 210.00,
+    in_stock: true,
+    pages: 400,
+    publisher: "Freedom Ink"
+  },
+  {
+    title: "The Beadwork Diaries",
+    author: "Nomvula Cele",
+    genre: "Cultural Fiction",
+    published_year: 2022,
+    price: 175.00,
+    in_stock: true,
+    pages: 270,
+    publisher: "Zulu Gold Publishers"
+  },
+  {
+    title: "Hustle in Hillbrow",
+    author: "Tshepo Lekganyane",
+    genre: "Urban Fiction",
+    published_year: 2020,
+    price: 160.00,
     in_stock: false,
-    pages: 635,
-    publisher: 'Harper & Brothers'
-  },
-  {
-    title: 'Wuthering Heights',
-    author: 'Emily Brontë',
-    genre: 'Gothic Fiction',
-    published_year: 1847,
-    price: 9.99,
-    in_stock: true,
-    pages: 342,
-    publisher: 'Thomas Cautley Newby'
+    pages: 350,
+    publisher: "Egoli Press"
   }
-];
+]);
 
-// Function to insert books into MongoDB
-async function insertBooks() {
-  const client = new MongoClient(uri);
+// Find books that are both in stock and published after 2010, with projection
+db.books.find(
+  {
+    in_stock: true,
+    published_year: { $gt: 2010 }
+  },
+  {
+    _id: 0,
+    title: 1,
+    author: 1,
+    price: 1
+  }
+);
 
-  try {
-    // Connect to the MongoDB server
-    await client.connect();
-    console.log('Connected to MongoDB server');
+// Sort books by price – ascending
+db.books.find(
+  {
+    in_stock: true,
+    published_year: { $gt: 2010 }
+  },
+  {
+    _id: 0,
+    title: 1,
+    author: 1,
+    price: 1
+  }
+).sort({ price: 1 });
 
-    // Get database and collection
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
+// Sort books by price – descending
+db.books.find(
+  {
+    in_stock: true,
+    published_year: { $gt: 2010 }
+  },
+  {
+    _id: 0,
+    title: 1,
+    author: 1,
+    price: 1
+  }
+).sort({ price: -1 });
 
-    // Check if collection already has documents
-    const count = await collection.countDocuments();
-    if (count > 0) {
-      console.log(`Collection already contains ${count} documents. Dropping collection...`);
-      await collection.drop();
-      console.log('Collection dropped successfully');
+//Pagination – 5 books per page using limit() and skip ()
+db.books.find(
+  { in_stock: true, published_year: { $gt: 2010 } },
+  { _id: 0, title: 1, author: 1, price: 1 }
+)
+.sort({ price: 1 })
+.limit(5)
+.skip(0); 
+
+db.books.find(
+  { in_stock: true, published_year: { $gt: 2010 } },
+  { _id: 0, title: 1, author: 1, price: 1 }
+)
+.sort({ price: 1 })
+.limit(5)
+.skip(5);
+
+// Calculate the average price of books by genre
+db.books.aggregate([
+  {
+    $group: {
+      _id: "$genre",
+      averagePrice: { $avg: "$price" },
+      totalBooks: { $sum: 1 }
     }
-
-    // Insert the books
-    const result = await collection.insertMany(books);
-    console.log(`${result.insertedCount} books were successfully inserted into the database`);
-
-    // Display the inserted books
-    console.log('\nInserted books:');
-    const insertedBooks = await collection.find({}).toArray();
-    insertedBooks.forEach((book, index) => {
-      console.log(`${index + 1}. "${book.title}" by ${book.author} (${book.published_year})`);
-    });
-
-  } catch (err) {
-    console.error('Error occurred:', err);
-  } finally {
-    // Close the connection
-    await client.close();
-    console.log('Connection closed');
+  },
+  {
+    $project: {
+      _id: 0,
+      genre: "$_id",
+      averagePrice: { $round: ["$averagePrice", 2] },
+      totalBooks: 1
+    }
   }
-}
+]);
 
-// Run the function
-insertBooks().catch(console.error);
+// Find the author with the most books in the collection
+db.books.aggregate([
+  {
+    $group: {
+      _id: "$author",
+      totalBooks: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { totalBooks: -1 }
+  },
+  {
+    $limit: 1
+  },
+  {
+    $project: {
+      _id: 0,
+      author: "$_id",
+      totalBooks: 1
+    }
+  }
+]);
 
-/*
- * Example MongoDB queries you can try after running this script:
- *
- * 1. Find all books:
- *    db.books.find()
- *
- * 2. Find books by a specific author:
- *    db.books.find({ author: "George Orwell" })
- *
- * 3. Find books published after 1950:
- *    db.books.find({ published_year: { $gt: 1950 } })
- *
- * 4. Find books in a specific genre:
- *    db.books.find({ genre: "Fiction" })
- *
- * 5. Find in-stock books:
- *    db.books.find({ in_stock: true })
- */ 
+// Find the author with the most books in the collection
+db.books.aggregate([
+  {
+    $group: {
+      _id: "$author",
+      totalBooks: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { totalBooks: -1 }
+  },
+  {
+    $limit: 1
+  },
+  {
+    $project: {
+      _id: 0,
+      author: "$_id",
+      totalBooks: 1
+    }
+  }
+]);
+
+// Group books by publication decade and count them
+db.books.aggregate([
+  {
+    $project: {
+      decade: {
+        $concat: [
+          { $toString: { $multiply: [{ $floor: { $divide: ["$published_year", 10] } }, 10] } },
+          "s"
+        ]
+      }
+    }
+  },
+  {
+    $group: {
+      _id: "$decade",
+      totalBooks: { $sum: 1 }
+    }
+  },
+  {
+    $sort: { _id: 1 }
+  },
+  {
+    $project: {
+      _id: 0,
+      decade: "$_id",
+      totalBooks: 1
+    }
+  }
+]);
+
+//Create an index on the title field
+db.books.createIndex({ title: 1 });
+
+db.books.find({ title: "Shadows of Soweto" });
+
+//Create a compound index on author and published_year
+db.books.createIndex({ author: 1, published_year: -1 });
+
+db.books.find({ author: "Naledi Khumalo" }).sort({ published_year: -1 });
+
+// Use explain() to analyze query performance
+db.books.find({ title: "Shadows of Soweto" }).explain("executionStats");
+db.books.find({ title: "Shadows of Soweto" }).explain("executionStats");

@@ -1,47 +1,52 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19648464&assignment_repo_type=AssignmentRepo)
-# MongoDB Fundamentals Assignment
+# 📚 MongoDB Book Collection Project
 
-This assignment focuses on learning MongoDB fundamentals including setup, CRUD operations, advanced queries, aggregation pipelines, and indexing.
+A MongoDB-powered project for managing a curated collection of South African-themed books. This project demonstrates database CRUD operations, advanced queries, aggregation pipelines, indexing for performance, and pagination.
 
-## Assignment Overview
+---
 
-You will:
-1. Set up a MongoDB database
-2. Perform basic CRUD operations
-3. Write advanced queries with filtering, projection, and sorting
-4. Create aggregation pipelines for data analysis
-5. Implement indexing for performance optimization
+## 🗂️ Project Overview
 
-## Getting Started
+This MongoDB collection stores information about books with fields like:
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install MongoDB locally or set up a MongoDB Atlas account
-4. Run the provided `insert_books.js` script to populate your database
-5. Complete the tasks in the assignment document
+- `title` (String)
+- `author` (String)
+- `genre` (String)
+- `published_year` (Number)
+- `price` (Number)
+- `in_stock` (Boolean)
+- `pages` (Number)
+- `publisher` (String)
 
-## Files Included
+The project uses fictional and real South African-inspired book data to simulate a real-world library or bookstore database.
 
-- `Week1-Assignment.md`: Detailed assignment instructions
-- `insert_books.js`: Script to populate your MongoDB database with sample book data
+---
 
-## Requirements
+## 🔧 Features
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- MongoDB Shell (mongosh) or MongoDB Compass
+- Add and manage book records
+- Search by genre, author, and publication year
+- Update book prices
+- Delete books by title
+- Aggregation queries (e.g. average price by genre)
+- Pagination and sorting
+- Performance optimization using indexes
 
-## Submission
+---
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+## 📦 Tools & Technologies
 
-1. Complete all tasks in the assignment
-2. Add your `queries.js` file with all required MongoDB queries
-3. Include a screenshot of your MongoDB database
-4. Update the README.md with your specific setup instructions
+- MongoDB
+- MongoDB Shell / Compass
+- JavaScript (Mongo Shell Queries)
 
-## Resources
+## 💡 Future Improvements
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [MongoDB University](https://university.mongodb.com/)
-- [MongoDB Node.js Driver](https://mongodb.github.io/node-mongodb-native/) 
+- Create a web-based interface using Node.js and Express
+- Add API routes for book management
+- Build a dashboard to visualize analytics using charts
+
+## 👤 Author
+
+Anele Mucavele
+📧 yolandaanele81@gmail.com
+🔗 GitHub: @AneleMucavele
